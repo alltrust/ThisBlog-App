@@ -1,0 +1,26 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title #{pageTitle}
+        link(rel="stylesheet", href="/css/main.css")
+        block styles 
+    body 
+        header.main-header
+            nav.main-header__nav
+                ul.main-header__item-list 
+                    li.main-header__item    
+                        a(href="/", class=( path === '/' ? "active" : '')) Home 
+                    li.main-header__item    
+                        a(href="/blogs", class=(path === '/blogs' ? "active" : '')) Blogs 
+                    li.main-header__item    
+                        a(href="/favourites", class=(path === '/favourites' ? "active" : '')) Favourites 
+                    li.main-header__item    
+                        a(href="/admin/blogs", class=(path === '/admin/blogs' ? "active" : '')) Admin Blogs     
+                    li.main-header__item    
+                        a(href="/admin/add-blog", class=(path === '/admin/add-blog' ? "active" : '')) Add Blogs
+        block content
+
+                     

@@ -2,3 +2,13 @@ extends ../layouts/main-layout
 
 block content
     h1 Details baby, details 
+        main    
+            img(src=blog.imgUrl, alt=blog.title)
+            div
+                h3 #{blog.title}
+                h4 #{blog.author}
+            p #{blog.content}
+            div
+                p #{blog.date}
+            include ../layouts/add-to-favourites
+

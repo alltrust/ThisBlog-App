@@ -2,3 +2,22 @@ extends ../layouts/main-layout
 
 block content
     h1 All Blog youve created  
+    main    
+        if blogs.length > 0
+            div
+                each blog in blogs 
+                    img(src=blog.imgUrl, alt=blog.title)
+                    div
+                        h3 #{blog.title}
+                        h4 #{blog.author}
+                    p #{blog.content}
+                    div
+                        p #{blog.date}
+                    a(href=`/admin/edit-blog/${blog.id}?edit=true`) Edit
+                    form(action="/admin/delete-item" method="POST")
+                        input(type="hidden", name="blogId" value= blog.id) 
+                        button(type="submit") DELETE BLOG
+        else    
+            p no Blogs yet 
+
+

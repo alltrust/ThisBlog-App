@@ -2,3 +2,17 @@ extends ../layouts/main-layout
 
 block content
     h1 You favs
+    main    
+        if blogs.length > 0
+            for blog in blogs   
+                p #{blog.title}
+                p #{blog.author}
+                p #{blog.content} 
+                form(action="/delete-favourite-item" method="POST")
+                    input(type="hidden", name="blogId", value=blog.id)
+                    button(type="submit") Remove from Favs
+        else 
+            p Select some favs!
+
+                    
+

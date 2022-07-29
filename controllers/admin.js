@@ -53,13 +53,14 @@ exports.postEditBlogs = (req, res, next) => {
   const blogAuthor = req.body.author;
   const blogImgUrl = req.body.imgUrl;
   const blogContent = req.body.content;
+  const blogNewDate = Date.now()
   const editedBlog = new Blog(
     blogId,
     blogTitle,
     blogAuthor,
     blogImgUrl,
     blogContent,
-    Date.now()
+    blogNewDate
   );
   editedBlog.saveBlog();
   res.redirect("/admin/blogs");

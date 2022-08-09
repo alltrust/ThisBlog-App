@@ -8,17 +8,18 @@ block content
             - const addBlog = '/admin/add-blog'
 
             form(action= isEditMode ? editBlog : addBlog, method="POST")
-                label(for="title") Title
-                input(type="text", name="title" value= isEditMode ? blog.title : '')#title
-                label(for="content") Content
-                input(type="text", name="content"  value= isEditMode ? blog.content : '')#content
-                label(for="imgUrl") Image Url
-                input(type="text", name="imgUrl"  value= isEditMode ? blog.imgUrl : '')#imgUrl
-                label(for="author") Name
-                input(type="text", name="author"  value= isEditMode ? blog.author : '')#author
-            if isEditMode
-                input(type="hidden", name="blogId" value=blog.id)
-                button(type="submit") Edit Blog
-            else 
-                button(type="submit") Add Blog
+                div
+                    label(for="title") Title
+                    input(type="text", name="title" value= isEditMode ? blog.title : '')#title
+                    label(for="content") Content
+                    input(type="text", name="content"  value= isEditMode ? blog.content : '')#content
+                    label(for="imgUrl") Image Url
+                    input(type="text", name="imgUrl"  value= isEditMode ? blog.imgUrl : '')#imgUrl
+                    label(for="author") Name
+                    input(type="text", name="author"  value= isEditMode ? blog.author : '')#author
+                if isEditMode
+                    input(type="hidden", name="blogId" value=blog.id)
+                    button(type="submit") Edit Blog
+                else 
+                    button(type="submit") Add Blog
 

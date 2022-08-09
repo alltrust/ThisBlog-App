@@ -1,5 +1,4 @@
 const Blog = require("../models/blog");
-const Favourites = require("../models/favourite");
 
 exports.getIndex = (req, res, next) => {
   Blog.findAll()
@@ -67,22 +66,6 @@ exports.getFavourites = (req, res, next) => {
       console.log(err);
     });
 };
-// Favourites.getFavourites((favBlogs) => {
-//   Blog.fetchAll((blogs) => {
-//     const favsArray = [];
-//     for (bl of blogs) {
-//       const bExists = favBlogs.blogs.find((bdata) => bdata.id === bl.id);
-//       if (bExists) {
-//         favsArray.push(bl);
-//       }
-//     }
-//     res.render("user/favourites", {
-//       pageTitle: "Favourites",
-//       path: "/favourites",
-//       blogs: favsArray,
-//     });
-//   });
-// });
 
 exports.postFavourites = (req, res, next) => {
   const blogId = req.body.blogId;
@@ -100,9 +83,6 @@ exports.postFavourites = (req, res, next) => {
     .catch((err) => {
       console.log(err);
     });
-
-  // Favourites.addtoFavourites(blogId);
-  // res.redirect("/favourites");
 };
 
 exports.postDeleteFavourite = (req, res, next) => {
@@ -121,6 +101,4 @@ exports.postDeleteFavourite = (req, res, next) => {
     .catch((err) => {
       console.log(err);
     });
-  // Favourites.removeFavourites(blogId);
-  // res.redirect("/favourites");
 };

@@ -1,7 +1,7 @@
 extends ../layouts/main-layout
 
 block styles 
-     link(rel="stylesheet", href="/css/form.css")
+    link(rel="stylesheet", href="/css/form.css")
 
 block content
     h1 Edit Blog 
@@ -20,9 +20,9 @@ block content
                         input(type="text", name="imgUrl"  value= isEditMode ? blog.imgUrl : '')#imgUrl
                         label(for="author") Name
                         input(type="text", name="author"  value= isEditMode ? blog.author : '')#author
-                    if isEditMode
-                        input(type="hidden", name="blogId" value=blog.id)
-                        button.btn(type="submit") Edit Blog
-                    else 
-                        button.btn(type="submit") Add Blog
+                        if isEditMode
+                            input(type="hidden", name="blogId" value=blog.id)
+                            button.btn(type="submit") Edit Blog
+                        else 
+                            button.btn(type="submit") Add Blog
 

@@ -17,7 +17,7 @@ block content
                         a(href=`/admin/edit-blog/${blog.id}?edit=true`) Edit
                         form(action="/admin/delete-item" method="POST")
                             input(type="hidden", name="blogId" value= blog.id) 
-                            button.btn.delete(type="submit") DELETE BLOG
+                            button.btn.btn-delete(type="submit") DELETE BLOG
         else    
             p no Blogs yet 
 

@@ -14,6 +14,6 @@ router.get('/edit-blog/:blogId', adminController.getEditBlogs)
 
 router.post('/edit-blog', adminController.postEditBlogs)
 
-router.post('/delete-item', adminController.postDeleteBlog)
+router.post('/delete-favourite-item', adminController.postDeleteBlog)
 
 module.exports = router

@@ -18,7 +18,7 @@ main {
 .centered {
   text-align: center;
 }
-.align-centered{
+.align-centered {
   display: flex;
   justify-content: center;
 }
@@ -109,15 +109,23 @@ a {
   width: 60%;
 }
 
-.btn {
+.btn,
+.btn-comment {
   padding: 20px;
-  background-color: #264653;
   color: white;
   border: none;
   border-radius: 10px;
 }
-.delete{
-  background-color: #e63946 ;
+
+.btn {
+  background-color: #264653;
+}
+.btn-delete {
+  background-color: #e63946;
+}
+
+.btn-comment {
+  background-color: #2a9d8f;
 }
 
 .btn:hover {

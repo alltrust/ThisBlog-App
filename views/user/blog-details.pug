@@ -1,5 +1,8 @@
 extends ../layouts/main-layout
 
+block styles 
+    link(rel="stylesheet", href="/css/form.css")
+
 block content
     h1 Details baby, details 
         main    
@@ -11,6 +14,22 @@ block content
                 div
                     p #{blog.content}
                     p #{blog.date}
+                hr
+                .comments 
+                    if comments.length > 0
+                        for comment in comments 
+                            div     
+                                h2 #{comment.userId} 
+                                p #{comment.content}
+                    else 
+                        p No comments yet
+                    hr
+                .form-comment
+                    form(action="/add-comment" method="POST") 
+                        label(for="comment") Comment ... 
+                        textarea.comment-section(name="comment", cols="100", rows="20") 
+                        input(type="hidden", name="blogId" value=blog.id )
+                        button.btn.btn-comment(type="submit") comment
                 -const blogId = blog.id
                 include ../layouts/add-to-favourites
 

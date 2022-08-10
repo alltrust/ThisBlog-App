@@ -14,9 +14,9 @@
 form > input {
   height: 40px;
 }
-form>textarea{
-    height: 80px;
-    font-size: medium;
+form > textarea {
+  height: 80px;
+  font-size: medium;
 }
 
 form > input,
@@ -25,6 +25,25 @@ form > textarea {
   border-radius: 5px;
 }
 
-form>label{
-    color: #264653;
+form > label {
+  color: #264653;
 }
+
+.form-comment {
+  width: 50%;
+  margin: auto;
+}
+
+.form-comment > form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.comment-section {
+  border: 1px solid black;
+}
+
+/* .comment-section::placeholder{
+    content: "comment";
+} */

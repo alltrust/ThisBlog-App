@@ -34,16 +34,29 @@ exports.getBlogDetails = (req, res, next) => {
   const blogId = req.params.blogId;
   Blog.findByPk(blogId)
     .then((blog) => {
-      res.render("user/blog-details", {
-        blog: blog,
-        pageTitle: blog.title,
-        path: "/blogs",
-      });
+      return blog
+        .getComments({ where: { blogId: blogId } })
+        .then((comments) => {
+          res.render("user/blog-details", {
+            blog: blog,
+            pageTitle: blog.title,
+            path: "/blogs",
+            comments:comments
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     })
     .catch((err) => {
       console.log(err);
     });
 };
+//res.render("user/blog-details", {
+//   blog: blog,
+//   pageTitle: blog.title,
+//   path: "/blogs",
+// })
 
 exports.getFavourites = (req, res, next) => {
   req.user
@@ -87,6 +100,7 @@ exports.postFavourites = (req, res, next) => {
 
 exports.postDeleteFavourite = (req, res, next) => {
   const blogId = req.body.blogId;
+  console.log(blogId);
   req.user
     .getFavourite()
     .then((favourites) => {
@@ -102,3 +116,33 @@ exports.postDeleteFavourite = (req, res, next) => {
       console.log(err);
     });
 };
+
+exports.postAddComment = (req, res, next) => {
+  const blogId = req.body.blogId;
+  const comment = req.body.comment;
+  req.user
+    .createComment({
+      content: comment,
+      blogId: blogId,
+    })
+    .then(() => {
+      res.redirect(`/blogs/${blogId}`);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+// exports.getAddComment = (req,res,next)=>{
+//   const blogId = req.body.blogId
+//   Blog.findByPk(blogId).then(blog=>{
+
+//   }).catch(err=>{
+//     console.log(err)
+//   })
+//   getComments().then(()=>{
+//     res.render(`user/blog-details,{
+
+//     })
+//   })
+// }

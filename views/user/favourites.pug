@@ -15,7 +15,7 @@ block content
                                 p #{blog.content}
                             div
                                 p #{blog.createdAt} 
-                            a(href=`/blogs/${blogId}`) Show details
+                            a(href=`/blogs/${blog.id}`) Show details
                             form(action="/delete-favourite-item" method="POST")
                                 input(type="hidden", name="blogId", value=blog.id)
                                 button.btn(type="submit") Remove from Favs

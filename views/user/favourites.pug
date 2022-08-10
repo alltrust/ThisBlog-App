@@ -4,13 +4,21 @@ block content
     h1 You favs
     main    
         if blogs.length > 0
-            for blog in blogs   
-                p #{blog.title}
-                p #{blog.author}
-                p #{blog.content} 
-                form(action="/delete-favourite-item" method="POST")
-                    input(type="hidden", name="blogId", value=blog.id)
-                    button(type="submit") Remove from Favs
+            for blog in blogs
+                .grid    
+                    .card.centered 
+                            div
+                                .image-container
+                                    img(src=blog.imgUrl, alt=blog.title)
+                                h3 #{blog.title}
+                                h4 #{blog.authour}
+                                p #{blog.content}
+                            div
+                                p #{blog.createdAt} 
+                            a(href=`/blogs/${blogId}`) Show details
+                            form(action="/delete-favourite-item" method="POST")
+                                input(type="hidden", name="blogId", value=blog.id)
+                                button.btn(type="submit") Remove from Favs
         else 
             p Select some favs!
 

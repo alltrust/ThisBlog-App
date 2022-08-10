@@ -4,17 +4,20 @@ block content
     h1 Blog List
     main    
         if blogs.length > 0
-            div
+            .grid 
                 each blog in blogs 
-                    div
-                        h3 #{blog.title}
-                        h4 #{blog.authour}
-                    p #{blog.content}
-                    div
-                        p #{blog.date}
-                        -const blogId = blog.id
-                        a(href=`/blogs/${blogId}`) Show details
-                        include ../layouts/add-to-favourites
+                    .card.centered 
+                        div
+                            .image-container
+                                img(src=blog.imgUrl, alt=blog.title)
+                            h3 #{blog.title}
+                            h4 #{blog.authour}
+                            p #{blog.content}
+                        div
+                            p #{blog.date}
+                            -const blogId = blog.id
+                            a(href=`/blogs/${blogId}`) Show details
+                            include ../layouts/add-to-favourites
 
         else    
             p no Blogs 

@@ -1,25 +1,28 @@
 extends ../layouts/main-layout
 
+block styles 
+     link(rel="stylesheet", href="/css/form.css")
+
 block content
     h1 Edit Blog 
         main 
             - const isEditMode = isEdit
             - const editBlog = '/admin/edit-blog'
             - const addBlog = '/admin/add-blog'
-
-            form(action= isEditMode ? editBlog : addBlog, method="POST")
-                div
-                    label(for="title") Title
-                    input(type="text", name="title" value= isEditMode ? blog.title : '')#title
-                    label(for="content") Content
-                    input(type="text", name="content"  value= isEditMode ? blog.content : '')#content
-                    label(for="imgUrl") Image Url
-                    input(type="text", name="imgUrl"  value= isEditMode ? blog.imgUrl : '')#imgUrl
-                    label(for="author") Name
-                    input(type="text", name="author"  value= isEditMode ? blog.author : '')#author
-                if isEditMode
-                    input(type="hidden", name="blogId" value=blog.id)
-                    button(type="submit") Edit Blog
-                else 
-                    button(type="submit") Add Blog
+            .centered.align-centered
+                .form-control
+                    form(action= isEditMode ? editBlog : addBlog, method="POST")
+                        label(for="title") Title
+                        input(type="text", name="title" value= isEditMode ? blog.title : '')#title
+                        label(for="content") Content
+                        textarea(type="text", name="content"  value= isEditMode ? blog.content : '')#content #{isEditMode ? blog.content: ''}
+                        label(for="imgUrl") Image Url
+                        input(type="text", name="imgUrl"  value= isEditMode ? blog.imgUrl : '')#imgUrl
+                        label(for="author") Name
+                        input(type="text", name="author"  value= isEditMode ? blog.author : '')#author
+                    if isEditMode
+                        input(type="hidden", name="blogId" value=blog.id)
+                        button.btn(type="submit") Edit Blog
+                    else 
+                        button.btn(type="submit") Add Blog
 

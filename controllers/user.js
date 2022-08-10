@@ -22,7 +22,7 @@ exports.getBlogs = (req, res, next) => {
       res.render("user/blog-list", {
         blogs: blogs,
         pageTitle: "Blogs",
-        path: "blogs",
+        path: "/blogs",
       });
     })
     .catch((err) => {

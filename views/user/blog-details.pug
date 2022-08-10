@@ -3,12 +3,14 @@ extends ../layouts/main-layout
 block content
     h1 Details baby, details 
         main    
-            img(src=blog.imgUrl, alt=blog.title)
-            div
-                h3 #{blog.title}
-                h4 #{blog.author}
-            p #{blog.content}
-            div
-                p #{blog.date}
-            include ../layouts/add-to-favourites
+            .centered
+                img.details-img(src=blog.imgUrl, alt=blog.title)
+                .author-title
+                    h2 #{blog.title}
+                    p #{blog.author}
+                div
+                    p #{blog.content}
+                    p #{blog.date}
+                -const blogId = blog.id
+                include ../layouts/add-to-favourites
 

@@ -1,0 +1,30 @@
+.form-control {
+  width: 800px;
+  background-color: #f4a261;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  justify-content: space-between;
+}
+
+.form-control > form {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+form > input {
+  height: 40px;
+}
+form>textarea{
+    height: 80px;
+    font-size: medium;
+}
+
+form > input,
+form > textarea {
+  border: none;
+  border-radius: 5px;
+}
+
+form>label{
+    color: #264653;
+}

@@ -132,3 +132,8 @@ a {
   cursor: pointer;
   background-color: #2a9d8f;
 }
+
+.edit-delete-reply{
+  display: flex;
+  flex-direction: row;
+}

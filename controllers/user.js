@@ -1,4 +1,5 @@
 const Blog = require("../models/blog");
+const Comment = require("../models/comment");
 
 exports.getIndex = (req, res, next) => {
   Blog.findAll()
@@ -41,7 +42,7 @@ exports.getBlogDetails = (req, res, next) => {
             blog: blog,
             pageTitle: blog.title,
             path: "/blogs",
-            comments:comments
+            comments: comments,
           });
         })
         .catch((err) => {
@@ -133,16 +134,22 @@ exports.postAddComment = (req, res, next) => {
     });
 };
 
-// exports.getAddComment = (req,res,next)=>{
-//   const blogId = req.body.blogId
-//   Blog.findByPk(blogId).then(blog=>{
+exports.postDeleteComment = (req, res, next) => {
+  const commentId = req.body.commentId;
+  const blogId = req.body.blogId;
+  console.log(commentId);
+  Comment.findByPk(commentId)
+    .then((comment) => {
+      return comment.destroy();
+    })
+    .then(() => {
+      res.redirect(`/blogs/${blogId}`);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
-//   }).catch(err=>{
-//     console.log(err)
-//   })
-//   getComments().then(()=>{
-//     res.render(`user/blog-details,{
+exports.postEditComment = (req, res, next) => {};
 
-//     })
-//   })
-// }
+exports.postAddReply = (req, res, next) => {};

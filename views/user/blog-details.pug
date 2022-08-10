@@ -21,6 +21,19 @@ block content
                             div     
                                 h2 #{comment.userId} 
                                 p #{comment.content}
+                            .edit-delete-reply
+                                form(action="/edit-comment" method="POST") 
+                                    input(type="hidden" value=comment.id name="commentId")
+                                    input(type="hidden" value=blog.id name="blogId")
+                                    button.btn.btn-edit(type="submit") E
+                                form(action="/delete-comment" method="POST")
+                                    input(type="hidden" value=comment.id name="commentId") 
+                                    input(type="hidden" value=blog.id name="blogId") 
+                                    button.btn.btn-delete(type="submit") D
+                                form(action="reply-comment" method="POST") 
+                                    input(type="hidden" value=comment.id name="commentId")
+                                    input(type="hidden" value=blog.id name="blogId")
+                                    button.btn.btn-reply(type="submit") R
                     else 
                         p No comments yet
                     hr

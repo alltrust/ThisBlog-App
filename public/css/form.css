@@ -44,6 +44,11 @@ form > label {
   border: 1px solid black;
 }
 
+a.btn{
+    font-size: small;
+    font-weight: 200;
+}
+
 /* .comment-section::placeholder{
     content: "comment";
 } */

@@ -137,7 +137,6 @@ exports.postAddComment = (req, res, next) => {
 exports.postDeleteComment = (req, res, next) => {
   const commentId = req.body.commentId;
   const blogId = req.body.blogId;
-  console.log(commentId);
   Comment.findByPk(commentId)
     .then((comment) => {
       return comment.destroy();
@@ -150,6 +149,52 @@ exports.postDeleteComment = (req, res, next) => {
     });
 };
 
-exports.postEditComment = (req, res, next) => {};
+exports.getEditComment = (req, res, next) => {
+  const commentId = req.params.commentId;
+  const blogId = req.params.blogId;
+  const isEditMode = req.query.edit;
+  if (!isEditMode) {
+    return res.redirect("/");
+  }
+  Blog.findByPk(blogId)
+    .then((blog) => {
+      return blog.getComments({ where: { id: commentId } }).then((comments) => {
+        const comment = comments[0];
+        if (!comment) {
+          res.redirect(`/blogs/${blogId}`);
+        }
+        res.render("user/blog-details", {
+          pageTitle: "Edit Comment",
+          path: "/blogs",
+          isEdit: isEditMode,
+          comment: comment,
+          comments:comments,
+          blog: blog,
+        });
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+exports.postEditComment = (req, res, next) => {
+  const commentId = req.body.commentId;
+  const blogId = req.body.blogId;
+  const updatedComment = req.body.comment;
+  console.log(req)
+  Comment.findByPk(commentId)
+    .then((comment) => {
+      comment.content = updatedComment;
+      return comment.save();
+    })
+    .then(() => {
+      res.redirect(`/blogs/${blogId}`);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
 exports.postAddReply = (req, res, next) => {};
+ 

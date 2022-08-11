@@ -22,10 +22,11 @@ block content
                                 h2 #{comment.userId} 
                                 p #{comment.content}
                             .edit-delete-reply
-                                form(action="/edit-comment" method="POST") 
-                                    input(type="hidden" value=comment.id name="commentId")
-                                    input(type="hidden" value=blog.id name="blogId")
-                                    button.btn.btn-edit(type="submit") E
+                                a.btn.btn-edit(href=`/blogs/${blog.id}/edit-comment/${comment.id}?edit=true`) E
+                                //- form(action="/edit-comment" method="POST") 
+                                //-     input(type="hidden" value=comment.id name="commentId")
+                                //-     input(type="hidden" value=blog.id name="blogId")
+                                //-     button.btn.btn-edit(type="submit") E
                                 form(action="/delete-comment" method="POST")
                                     input(type="hidden" value=comment.id name="commentId") 
                                     input(type="hidden" value=blog.id name="blogId") 
@@ -38,11 +39,12 @@ block content
                         p No comments yet
                     hr
                 .form-comment
-                    form(action="/add-comment" method="POST") 
-                        label(for="comment") Comment ... 
-                        textarea.comment-section(name="comment", cols="100", rows="20") 
-                        input(type="hidden", name="blogId" value=blog.id )
-                        button.btn.btn-comment(type="submit") comment
+                    form(action= isEdit ? "/edit-comment": " /add-comment", method="POST") 
+                        label(for="comment") #{isEdit ? "Update..." : "Comment..."} 
+                        textarea.comment-section(name="comment", cols="100", rows="20" value= isEdit ? comment.content : '')#content #{isEdit ? comment.content : ''}
+                        input(type="hidden", name=isEdit ?"commentId": '', value=isEdit ? comment.id : '')
+                        input(type="hidden", name="blogId", value=blog.id )
+                        button.btn.btn-comment(type="submit") #{isEdit? "Update": "Comment"}
                 -const blogId = blog.id
                 include ../layouts/add-to-favourites
 

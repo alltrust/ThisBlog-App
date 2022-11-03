@@ -1,1 +1,18 @@
-[{"id":"0.05481830295911139","title":"This Title","author":"Jr","imgUrl":"https://media.blogto.com/articles/20210622-torontosunset1.jpg?w=2048&cmd=resize_then_crop&height=1365&quality=70","content":"with hopefully some good content","date":1658943624752},{"id":"0.2358807416121007","title":"Another Blog","author":"asd","imgUrl":"https://cdn.britannica.com/51/190751-050-147B93F7/soccer-ball-goal.jpg?q=60","content":"hopeshelly","date":1659014822119}]
+[
+  {
+    "id": "0.05481830295911139",
+    "title": "This Title",
+    "author": "Jr",
+    "imgUrl": "https://media.blogto.com/articles/20210622-torontosunset1.jpg?w=2048&cmd=resize_then_crop&height=1365&quality=70",
+    "content": "with hopefully some good content",
+    "date": 1658943624752
+  },
+  {
+    "id": "0.2358807416121007",
+    "title": "Another Blog",
+    "author": "asd",
+    "imgUrl": "https://cdn.britannica.com/51/190751-050-147B93F7/soccer-ball-goal.jpg?q=60",
+    "content": "hopeshelly",
+    "date": 1659014822119
+  }
+]

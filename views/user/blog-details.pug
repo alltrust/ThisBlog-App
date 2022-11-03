@@ -23,10 +23,6 @@ block content
                                 p #{comment.content}
                             .edit-delete-reply
                                 a.btn.btn-edit(href=`/blogs/${blog.id}/edit-comment/${comment.id}?edit=true`) E
-                                //- form(action="/edit-comment" method="POST") 
-                                //-     input(type="hidden" value=comment.id name="commentId")
-                                //-     input(type="hidden" value=blog.id name="blogId")
-                                //-     button.btn.btn-edit(type="submit") E
                                 form(action="/delete-comment" method="POST")
                                     input(type="hidden" value=comment.id name="commentId") 
                                     input(type="hidden" value=blog.id name="blogId") 

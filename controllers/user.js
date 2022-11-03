@@ -13,7 +13,6 @@ exports.getIndex = (req, res, next) => {
     .catch((err) => {
       console.log(err);
     });
-  
 };
 
 exports.getBlogs = (req, res, next) => {
@@ -52,7 +51,6 @@ exports.getBlogDetails = (req, res, next) => {
       console.log(err);
     });
 };
-
 
 exports.getFavourites = (req, res, next) => {
   req.user
@@ -163,7 +161,7 @@ exports.getEditComment = (req, res, next) => {
           path: "/blogs",
           isEdit: isEditMode,
           comment: comment,
-          comments:comments,
+          comments: comments,
           blog: blog,
         });
       });
@@ -177,7 +175,7 @@ exports.postEditComment = (req, res, next) => {
   const commentId = req.body.commentId;
   const blogId = req.body.blogId;
   const updatedComment = req.body.comment;
-  console.log(req)
+  console.log(req);
   Comment.findByPk(commentId)
     .then((comment) => {
       comment.content = updatedComment;
@@ -192,4 +190,3 @@ exports.postEditComment = (req, res, next) => {
 };
 
 exports.postAddReply = (req, res, next) => {};
- 

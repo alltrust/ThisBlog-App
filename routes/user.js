@@ -12,8 +12,11 @@ router.post("/favourites", userContoller.postFavourites);
 router.post("/delete-favourite-item", userContoller.postDeleteFavourite);
 
 router.post("/add-comment", userContoller.postAddComment);
-router.get('/blogs/:blogId/edit-comment/:commentId', userContoller.getEditComment)
-router.post("/edit-comment", userContoller.postEditComment)
-router.post("/delete-comment", userContoller.postDeleteComment)
+router.get(
+  "/blogs/:blogId/edit-comment/:commentId",
+  userContoller.getEditComment
+);
+router.post("/edit-comment", userContoller.postEditComment);
+router.post("/delete-comment", userContoller.postDeleteComment);
 
 module.exports = router;

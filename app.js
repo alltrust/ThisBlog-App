@@ -47,10 +47,8 @@ User.hasMany(Comment);
 Comment.belongsTo(Blog);
 Blog.hasMany(Comment);
 
-// Favourite.belongsToMany(Blog, {through})
 
 sequelize
-//   .sync({ force: true })
   .sync()
   .then((result) => {
     return User.findByPk(1);

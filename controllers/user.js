@@ -13,8 +13,7 @@ exports.getIndex = (req, res, next) => {
     .catch((err) => {
       console.log(err);
     });
-  //random selection of blog from array to display 1 blog with
-  //the welcome page
+  
 };
 
 exports.getBlogs = (req, res, next) => {
@@ -53,11 +52,7 @@ exports.getBlogDetails = (req, res, next) => {
       console.log(err);
     });
 };
-//res.render("user/blog-details", {
-//   blog: blog,
-//   pageTitle: blog.title,
-//   path: "/blogs",
-// })
+
 
 exports.getFavourites = (req, res, next) => {
   req.user

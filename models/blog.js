@@ -26,4 +26,4 @@ const Blog = sequelize.define("blog", {
   },
 });
 
-module.exports = Blog
+module.exports = Blog;
